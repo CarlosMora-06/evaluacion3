@@ -40,16 +40,16 @@ from mascotas.views import crear_mascota,modificar_mascota,eliminar_mascota,list
 urlpatterns = [
     #Responsables
     path('admin/', admin.site.urls),
-    path('responsable/agregar', crear_responsable),
+    path('responsable/crear', crear_responsable),
     path('responsable/modificar/<int:id>', modificar_responsable),
     path('responsable/eliminar/<int:id>', eliminar_responsable),
-    path('responsable', listar_responsables),
+    path('responsables', listar_responsables),
     path('responsable/<int:id>', listar_responsable),
 
     #Mascotas
-    path('mascota/agregar', crear_mascota),
+    path('mascota/crear', crear_mascota),
     path('mascota/modificar/<int:id>', modificar_mascota),
     path('mascota/eliminar/<int:id>', eliminar_mascota),
-    path('mascota', listar_mascotas),
+    path('mascotas', listar_mascotas),
     path('mascota/<int:id>', listar_mascota)
 ]

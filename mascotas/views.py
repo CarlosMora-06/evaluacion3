@@ -53,7 +53,7 @@ def listar_responsables(request):
 def listar_responsable(request, id):
     try:
         responsable_obtenido = Responsable.objects.get(id=id)
-        serializado = ResponsableSerializer(responsable_obtenido, many=False) # Al ser 1 resultado es many=False
+        serializado = ResponsableSerializer(responsable_obtenido, many=True) # Al ser 1 resultado es many=False
 
         return Response(serializado.data, status=status.HTTP_200_OK)
     except:
@@ -92,11 +92,12 @@ def eliminar_mascota(request, id):
     except:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-@api_view(['GET'])
+
+@api_view(['GET']) #FUNCIONA
 def listar_mascotas(request):
     try:
-        listado_mascota = Responsable.objects.all()  # SELECT * FROM cliente;
-        serializado = MascotaSerializer(listado_mascota, many=True)  # Convertimos a JSON
+        listado_mascotas = Mascota.objects.all()
+        serializado = MascotaSerializer(listado_mascotas, many=True)
 
         return Response(serializado.data, status=status.HTTP_200_OK)
     except:
@@ -107,7 +108,7 @@ def listar_mascotas(request):
 def listar_mascota(request, id):
     try:
         mascota_obtenido = Mascota.objects.get(id=id)
-        serializado = MascotaSerializer(mascota_obtenido, many=False) # Al ser 1 resultado es many=False
+        serializado = MascotaSerializer(mascota_obtenido, many=True) # Al ser 1 resultado es many=False
 
         return Response(serializado.data, status=status.HTTP_200_OK)
     except:
